@@ -10,8 +10,8 @@ const message = (
   </>
 );
 
-const Demo2: React.FC<unknown> = () => {
+const Demo3: React.FC<unknown> = () => {
   return <DemoPage demoPath="demo3" message={message} />;
 };
 
-export default Demo2;
+export default Demo3;
