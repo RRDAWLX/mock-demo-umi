@@ -8,7 +8,7 @@ const { list } = mock({
       desc: '@csentence(10, 40)',
       startTime: Date.now(),
       endTime: Date.now(),
-      'status|1': [1, 2, 3],
+      'status|1': [1, 2, 3, 4],
     },
   ],
 });

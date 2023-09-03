@@ -1,9 +1,16 @@
 import { getStatusList, queryList } from '@/services';
 import { PageContainer, ProTable } from '@ant-design/pro-components';
-import { Alert } from 'antd';
+import { Alert, Tag } from 'antd';
 import React, { ReactNode, useEffect, useMemo, useState } from 'react';
 
-type StateItem = { code: number; desc: string };
+const status = {
+  1: 'default',
+  2: 'processing',
+  3: 'success',
+  4: 'error',
+} as const;
+
+type StateItem = { code: keyof typeof status; desc: string };
 
 const DemoPage: React.FC<{
   demoPath: string;
@@ -39,11 +46,11 @@ const DemoPage: React.FC<{
       {
         title: '状态',
         dataIndex: 'status',
-        width: 60,
+        width: 80,
         valueType: 'select',
-        valueEnum: statusList.reduce<Record<number, { text: string }>>(
+        valueEnum: statusList.reduce<Record<number, ReactNode>>(
           (valueEnum, { code, desc }) => {
-            valueEnum[code] = { text: desc };
+            valueEnum[code] = <Tag color={status[code]}>{desc}</Tag>;
             return valueEnum;
           },
           {},

@@ -13,7 +13,23 @@ const list = [
     desc: '描述描述描述描述描述描述描述',
     startTime: Date.now(),
     endTime: Date.now(),
-    status: 1,
+    status: 2,
+  },
+  {
+    id: 32345678,
+    taskName: '任务名称',
+    desc: '描述描述描述描述描述描述描述',
+    startTime: Date.now(),
+    endTime: Date.now(),
+    status: 3,
+  },
+  {
+    id: 42345678,
+    taskName: '任务名称',
+    desc: '描述描述描述描述描述描述描述',
+    startTime: Date.now(),
+    endTime: Date.now(),
+    status: 4,
   },
 ];
 
