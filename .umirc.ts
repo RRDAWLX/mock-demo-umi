@@ -19,6 +19,11 @@ export default defineConfig({
       path: '/demo1',
       component: './Demo1',
     },
+    {
+      name: ' Demo2',
+      path: '/demo2',
+      component: './Demo2',
+    },
   ],
   npmClient: 'pnpm',
 });

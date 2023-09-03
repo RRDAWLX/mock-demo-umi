@@ -1,5 +1,5 @@
 export default {
-  'GET /api/demo1/status': {
+  'GET /api/demo2/status': {
     success: true,
     data: {
       status: [

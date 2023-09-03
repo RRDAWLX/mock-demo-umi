@@ -1,21 +1,17 @@
-const list = [
-  {
-    id: 12345678,
-    taskName: '任务名称',
-    desc: '描述描述描述描述描述描述描述',
-    startTime: Date.now(),
-    endTime: Date.now(),
-    status: 1,
-  },
-  {
-    id: 22345678,
-    taskName: '任务名称',
-    desc: '描述描述描述描述描述描述描述',
-    startTime: Date.now(),
-    endTime: Date.now(),
-    status: 1,
-  },
-];
+const { mock } = require('mockjs');
+
+const { list } = mock({
+  'list|5-100': [
+    {
+      id: '@integer(10000000, 99999999)',
+      taskName: '@ctitle(2, 10)',
+      desc: '@csentence(10, 40)',
+      startTime: Date.now(),
+      endTime: Date.now(),
+      'status|1': [1, 2, 3],
+    },
+  ],
+});
 
 export default {
   'GET /api/demo2/list': (_req, res) => {

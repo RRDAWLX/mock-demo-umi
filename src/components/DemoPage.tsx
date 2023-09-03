@@ -1,3 +1,4 @@
+import { getStatusList, queryList } from '@/services';
 import { PageContainer, ProTable } from '@ant-design/pro-components';
 import { Alert } from 'antd';
 import React, { ReactNode, useEffect, useMemo, useState } from 'react';
@@ -5,10 +6,9 @@ import React, { ReactNode, useEffect, useMemo, useState } from 'react';
 type StateItem = { code: number; desc: string };
 
 const DemoPage: React.FC<{
-  getStatusList: () => Promise<any>;
-  queryList: (params: any) => Promise<any>;
+  demoPath: string;
   message: ReactNode;
-}> = ({ getStatusList, queryList, message }) => {
+}> = ({ demoPath, message }) => {
   const [statusList, setStatusList] = useState<Array<StateItem>>([]);
 
   const columns = useMemo(
@@ -72,9 +72,11 @@ const DemoPage: React.FC<{
   );
 
   useEffect(() => {
-    getStatusList().then(({ data: { status } }) => {
-      setStatusList(status);
-    });
+    getStatusList(demoPath)().then(
+      ({ data: { status } }: { data: { status: StateItem[] } }) => {
+        setStatusList(status);
+      },
+    );
   }, []);
 
   return (
@@ -88,7 +90,7 @@ const DemoPage: React.FC<{
         rowKey="id"
         columns={columns}
         request={async (params) => {
-          const { data, success } = await queryList(params);
+          const { data, success } = await queryList(demoPath)(params);
           return {
             data: data?.list || [],
             total: data?.total || 0,
