@@ -62,7 +62,9 @@ const DemoPage: React.FC<{
         hideInSearch: true,
         width: 160,
         renderText(timestamp: number) {
-          return new Date(timestamp).toJSON().slice(0, 19).replace('T', ' ');
+          return timestamp
+            ? new Date(timestamp).toJSON().slice(0, 19).replace('T', ' ')
+            : '-';
         },
       },
       {
@@ -71,7 +73,9 @@ const DemoPage: React.FC<{
         hideInSearch: true,
         width: 160,
         renderText(timestamp: number) {
-          return new Date(timestamp).toJSON().slice(0, 19).replace('T', ' ');
+          return timestamp
+            ? new Date(timestamp).toJSON().slice(0, 19).replace('T', ' ')
+            : '-';
         },
       },
     ],
